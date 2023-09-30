@@ -8,11 +8,12 @@ import App from "./App";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 
-import { fetchUsers } from "./features/users/usersSlice";
-import { fetchPosts } from "./features/posts/postsSlice";
+import { usersApiSlice } from "./features/users/usersSlice";
 
-store.dispatch(fetchPosts());
-store.dispatch(fetchUsers());
+import { extendedApiSlice } from "./features/posts/postsSlice";
+
+store.dispatch(extendedApiSlice.endpoints.getPosts.initiate());
+store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
 
 ReactDOM.render(
   <React.StrictMode>
